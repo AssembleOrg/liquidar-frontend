@@ -6,16 +6,6 @@ interface GoogleUser {
   expires_in: number;
   scope: string;
 }
-
-interface GoogleUserInfo {
-  id: string;
-  email: string;
-  name: string;
-  picture: string;
-  given_name: string;
-  family_name: string;
-}
-
 export const useGoogleAuth = () => {
   const googleLogin = useGoogleLogin({
     onSuccess: (tokenResponse: GoogleUser) => {

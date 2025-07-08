@@ -19,7 +19,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import AppBarCustom from '../components/AppBarCustom';
-import { useAuthStore, type User } from '../../application/stores/authStore';
+import { useAuthStore } from '../../application/stores/authStore';
 import { useSnackbar } from 'notistack';
 import type { BillItem } from '../../shared/types';
 import { apiService } from '../../infrastructure/services/apiService';

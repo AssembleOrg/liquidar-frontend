@@ -28,7 +28,7 @@ interface PaymentSectionProps {
   onPaymentError?: (error: string) => void;
 }
 
-const PaymentSection: React.FC<PaymentSectionProps> = ({ onPaymentSuccess, onPaymentError }) => {
+const PaymentSection: React.FC<PaymentSectionProps> = ({ onPaymentError }) => {
   const { user } = useAuthStore();
   const [installments, setInstallments] = useState<number>(1);
   const [error, setError] = useState('');

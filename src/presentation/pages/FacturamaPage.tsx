@@ -9,10 +9,7 @@ import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import DescriptionIcon from '@mui/icons-material/Description';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { UNIDADES_AFIP } from '../components/ItemsDialog';
-import { useAuthStore, type User } from '../../application/stores/authStore';
-import type { BillItem } from '../../shared/types';
-import { apiService } from '../../infrastructure/services/apiService';
-import type { ApiResponse } from '../../infrastructure/responses/ApiResponse.type';
+import { useAuthStore } from '../../application/stores/authStore';
 import { validateUUID } from '../../shared/functions/validation';
 import { enqueueSnackbar } from 'notistack';
 
@@ -105,17 +102,10 @@ const FacturamaPage: React.FC = () => {
     const [template, setTemplate] = useState<'factura' | 'ticket'>('factura');
     const [expandedSection, setExpandedSection] = useState<'comprobante' | 'emisor' | 'receptor' | 'totales' | false>('receptor');
     const [itemsDialogOpen, setItemsDialogOpen] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isLoadingCuit, setIsLoadingCuit] = useState(false);
-    const [billItems, setBillItems] = useState<BillItem[]>([]);
+    const [, setIsLoading] = useState(false);
 
-    const fetchBillItems = async (user: User) => {
-        const response = await apiService.get<ApiResponse<BillItem[]>>(`/general/user/${user.id}`);
-        if (response.status === 'success') {
-            setBillItems(response.data);
-        }
-    }
-    const { user, setUser } = useAuthStore();
+
+    const { user } = useAuthStore();
 
     useEffect(() => {
         if (user) {
